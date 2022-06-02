@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "121166676599",
+    "project_id": "cem-98b80",
+    "storage_bucket": "cem-98b80.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:121166676599:android:70b19ebb82acbd65df7c72",
+        "android_client_info": {
+          "package_name": "com.example.a6002cem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "121166676599-chpd62u3nt0i8oqsiacr7jj6era1t5id.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzPa34bwYHb7eqwvPwIqXSlHw-FWmno-c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "121166676599-chpd62u3nt0i8oqsiacr7jj6era1t5id.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
