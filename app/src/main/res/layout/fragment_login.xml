@@ -32,7 +32,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="username"
+            android:hint="@string/username"
             app:boxBackgroundColor="#F8E9FD"
             android:layout_marginTop="50dp"
             android:layout_marginStart="40dp"
@@ -48,7 +48,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="password"
+            android:hint="@string/password"
             app:boxBackgroundColor="#F8E9FD"
             android:layout_marginTop="10dp"
             android:layout_marginStart="40dp"
@@ -71,7 +71,7 @@
                 android:id="@+id/btn_login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Login"
+                android:text="@string/login"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="40dp"/>
 
@@ -80,7 +80,7 @@
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Register"
+                android:text="@string/register"
                 android:layout_toLeftOf="@id/btn_login"
                 android:layout_marginEnd="40dp"/>
 

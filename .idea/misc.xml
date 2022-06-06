@@ -3,12 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/chikai/AndroidStudioProjects/6002CEM/app/src/main/res/drawable-v24/bottom_nav_selector.xml" value="0.3025" />
+        <entry key="..\:/Users/chikai/AndroidStudioProjects/6002CEM/app/src/main/res/drawable-v24/ic_outlined_person_24.xml" value="0.199" />
         <entry key="..\:/Users/chikai/AndroidStudioProjects/6002CEM/app/src/main/res/layout/activity_main.xml" value="0.17831813576494426" />
         <entry key="..\:/Users/chikai/AndroidStudioProjects/6002CEM/app/src/main/res/layout/fragment_home.xml" value="0.3087719298245614" />
         <entry key="..\:/Users/chikai/AndroidStudioProjects/6002CEM/app/src/main/res/layout/fragment_item.xml" value="0.15833333333333333" />
         <entry key="..\:/Users/chikai/AndroidStudioProjects/6002CEM/app/src/main/res/layout/fragment_login.xml" value="0.3087719298245614" />
         <entry key="..\:/Users/chikai/AndroidStudioProjects/6002CEM/app/src/main/res/layout/fragment_register.xml" value="0.15833333333333333" />
         <entry key="..\:/Users/chikai/AndroidStudioProjects/6002CEM/app/src/main/res/layout/item_card_view.xml" value="0.2969298245614035" />
+        <entry key="..\:/Users/chikai/AndroidStudioProjects/6002CEM/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.3047619047619048" />
       </map>
     </option>
   </component>
