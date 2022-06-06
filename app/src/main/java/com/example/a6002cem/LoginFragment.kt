@@ -14,17 +14,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [LoginFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-
 class LoginFragment : Fragment() {
     private lateinit var username: EditText
     private lateinit var password: EditText
@@ -67,7 +56,6 @@ class LoginFragment : Fragment() {
                 btnLogin.isEnabled = true
                 btnLogin.alpha = 1.0f
                 Toast.makeText(context,task.exception?.message,Toast.LENGTH_SHORT).show()
-
             }
         }
     }

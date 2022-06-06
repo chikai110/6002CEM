@@ -10,16 +10,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class HomeFragment : Fragment() {
     var recyclerView: RecyclerView? = null
     var adapter: ItemAdapter? = null
@@ -34,8 +24,8 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragment_home, container, false)
 
-        database = FirebaseDatabase.getInstance()
-        reference = database?.getReference("products")
+        database = FirebaseDatabase.getInstance("https://cem-98b80-default-rtdb.asia-southeast1.firebasedatabase.app")
+        reference = database?.getReference("items")
 
         val firebaseListener = object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -50,18 +40,14 @@ class HomeFragment : Fragment() {
 
                     itemList.add(items)
                 }
-
                 adapter?.notifyDataSetChanged()
-
             }
 
             override fun onCancelled(error: DatabaseError) {
                 Log.d("test", error.message)
             }
-
         }
         reference?.addValueEventListener(firebaseListener)
-
 
         recyclerView = view.findViewById(R.id.recycler_view)
         recyclerView?.setHasFixedSize(true)
@@ -69,10 +55,8 @@ class HomeFragment : Fragment() {
             2,
             GridLayoutManager.VERTICAL,
             false)
-
         adapter = ItemAdapter(itemList)
         recyclerView?.adapter = adapter
-
         return view
     }
 

@@ -1,5 +1,6 @@
 package com.example.a6002cem
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,7 +21,6 @@ class ItemAdapter(private var itemList:MutableList<Item>): RecyclerView.Adapter<
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-//        holder.productImage.setImageResource(productList[position].img)
         Picasso.get().load(itemList[position].img)
             .into(holder.itemImage)
         holder.itemTitle.text = itemList[position].title
