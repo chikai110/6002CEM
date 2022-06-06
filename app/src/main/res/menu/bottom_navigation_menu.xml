@@ -4,7 +4,7 @@
         android:id="@+id/homeFragment"
         android:enabled="true"
         android:icon="@drawable/ic_outlined_home_24"
-        android:title="@string/bottom_nav_home_label"/>
+        android:title="@string/bottom_nav_home_label" />
     <item
         android:id="@+id/cartFragment"
         android:enabled="true"

@@ -54,13 +54,16 @@ class MainActivity : AppCompatActivity(), FragmentNavigation{
             when (it.itemId) {
                 R.id.homeFragment->{
                     loadFragment(HomeFragment())
+                    return@setOnItemSelectedListener true
                 }
                 R.id.cartFragment -> {
                     loadFragment(LoginFragment())
+                    return@setOnItemSelectedListener true
                 }
                 R.id.accountFragment -> {
                     save()
                     sharedPreferences!!.getString(LANG_KEY, "en")?.let { it1 -> setLocale(it1) }
+                    return@setOnItemSelectedListener true
                 }
             }
             false
