@@ -34,7 +34,7 @@ class HomeFragment : Fragment() {
                 val child = snapshot.children
                 child.forEach{
 
-                    var items = Item(it.child("img").value.toString(),
+                    var items = Item(it.value.toString(), it.child("img").value.toString(),
                         it.child("name").value.toString(),
                         it.child("price").value.toString())
 
@@ -58,7 +58,14 @@ class HomeFragment : Fragment() {
         adapter = ItemAdapter(itemList)
         adapter!!.setOnItemClickListener(object : ItemAdapter.onItemClickListener {
             override fun onItemClick(position: Int) {
-                Log.d("test", "click $position")
+                var a = itemList[position].id
+//                val bundle = Bundle()
+//                bundle.putString("param1", a)
+                var navItemDetails = activity as FragmentNavigation
+                val frag2 = ItemDetailsFragment.newInstance(a,null)
+//                frag2.arguments = bundle
+                navItemDetails.navigateFrag(frag2,addToStack = true)
+                Log.d("test", "click $a")
             }
         })
 

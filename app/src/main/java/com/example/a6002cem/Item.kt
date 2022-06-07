@@ -1,3 +1,3 @@
 package com.example.a6002cem
 
-class Item(var img: String, var title: String, var price: String)
+class Item(var id: String, var img: String, var title: String, var price: String)
