@@ -11,4 +11,7 @@
     <string name="bottom_nav_cart_label">Cart</string>
     <string name="bottom_nav_orders_label">Order</string>
     <string name="bottom_nav_account_label">Account</string>
+    <string name="profile_img_desc">Profile Image</string>
+    <string name="profile_email_label_text">Email</string>
+    <string name="profile_mobile_label_text">Mobile Number</string>
 </resources>

@@ -32,10 +32,6 @@
         <item name="android:minHeight">30dp</item>
     </style>
 
-<!--    <style name="AppBarTitleStyle" parent="TextAppearance.MyTheme.Headline6">-->
-<!--        <item name="android:textStyle">bold</item>-->
-<!--    </style>-->
-
     <style name="BottomNavigationStyle" parent="Widget.MaterialComponents.BottomNavigationView">
         <item name="itemIconSize">28dp</item>
         <item name="itemTextColor">@drawable/bottom_nav_selector</item>

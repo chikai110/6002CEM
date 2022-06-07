@@ -61,8 +61,9 @@ class MainActivity : AppCompatActivity(), FragmentNavigation{
                     return@setOnItemSelectedListener true
                 }
                 R.id.accountFragment -> {
-                    save()
-                    sharedPreferences!!.getString(LANG_KEY, "en")?.let { it1 -> setLocale(it1) }
+                    loadFragment(ProfileFragment())
+//                    save()
+//                    sharedPreferences!!.getString(LANG_KEY, "en")?.let { it1 -> setLocale(it1) }
                     return@setOnItemSelectedListener true
                 }
             }
@@ -74,12 +75,10 @@ class MainActivity : AppCompatActivity(), FragmentNavigation{
     private fun setLocale(localeName: String) {
         if (localeName !== currentLang) {
             locale = Locale(localeName)
-            val res = resources
-            val dm = res.displayMetrics
-            val conf = res.configuration
-            conf.setLocale(locale)
-            currentLang = localeName
-            res.updateConfiguration(conf, dm)
+            val dm = resources.displayMetrics
+            val configuration = resources.configuration
+            configuration.setLocale(locale)
+            resources.updateConfiguration(configuration, dm)
             val refresh = Intent(
                 this,
                 MainActivity::class.java
