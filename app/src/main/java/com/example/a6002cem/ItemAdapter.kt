@@ -10,6 +10,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
 class ItemAdapter(private var itemList:MutableList<Item>): RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
+
+    private lateinit var mListener : onItemClickListener
+
+    interface onItemClickListener {
+        fun onItemClick(position: Int)
+    }
+
+    fun setOnItemClickListener(listener: onItemClickListener) {
+        mListener = listener
+    }
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -17,7 +28,7 @@ class ItemAdapter(private var itemList:MutableList<Item>): RecyclerView.Adapter<
 
         val layoutView: View = LayoutInflater.from(parent.context).
         inflate(R.layout.item_card_view,parent,false)
-        return ItemViewHolder(layoutView)
+        return ItemViewHolder(layoutView, mListener)
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
@@ -31,10 +42,16 @@ class ItemAdapter(private var itemList:MutableList<Item>): RecyclerView.Adapter<
         return itemList.size
     }
 
-    class ItemViewHolder(view: View): RecyclerView.ViewHolder(view){
+    class ItemViewHolder(view: View, listener: onItemClickListener): RecyclerView.ViewHolder(view){
         var itemImage: ImageView = view.findViewById(R.id.item_image)
         var itemTitle: TextView = view.findViewById(R.id.item_title)
         var itemPrice: TextView = view.findViewById(R.id.item_price)
+
+        init {
+            itemView.setOnClickListener {
+                listener.onItemClick(adapterPosition)
+            }
+        }
     }
 
 

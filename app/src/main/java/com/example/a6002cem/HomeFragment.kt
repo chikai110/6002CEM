@@ -56,6 +56,12 @@ class HomeFragment : Fragment() {
             GridLayoutManager.VERTICAL,
             false)
         adapter = ItemAdapter(itemList)
+        adapter!!.setOnItemClickListener(object : ItemAdapter.onItemClickListener {
+            override fun onItemClick(position: Int) {
+                Log.d("test", "click $position")
+            }
+        })
+
         recyclerView?.adapter = adapter
         return view
     }
