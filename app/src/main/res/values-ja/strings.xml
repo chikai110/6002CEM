@@ -14,4 +14,12 @@
     <string name="profile_img_desc">Profile Image</string>
     <string name="profile_email_label_text">Email</string>
     <string name="profile_mobile_label_text">Mobile Number</string>
+    <string name="pro_details_like_btn_desc">Like Button</string>
+    <string name="pro_details_select_size_lable_text">Select Size</string>
+    <string name="pro_details_select_color_label_text">Select Color</string>
+    <string name="pro_details_specif_label_text">Specification</string>
+    <string name="pro_details_price_value">$%s</string>
+    <string name="pro_details_actual_strike_value">$%s</string>
+    <string name="pro_details_add_to_cart_btn_text">Add To Cart</string>
+    <string name="product_detail_image_desc">Product Image</string>
 </resources>

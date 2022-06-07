@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity(), FragmentNavigation{
                     return@setOnItemSelectedListener true
                 }
                 R.id.cartFragment -> {
-                    loadFragment(LoginFragment())
+                    loadFragment(ItemDetailsFragment())
                     return@setOnItemSelectedListener true
                 }
                 R.id.accountFragment -> {
