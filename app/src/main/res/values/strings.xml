@@ -11,6 +11,9 @@
     <string name="bottom_nav_profile_label">Profile</string>
     <string name="bottom_nav_language_label">Language</string>
 
+    <string name="item_release">Release</string>
+    <string name="item_duration">Duration</string>
+
     <string name="profile_img_desc">Profile Image</string>
     <string name="profile_email_label_text">Email</string>
     <string name="profile_mobile_label_text">Mobile Number</string>

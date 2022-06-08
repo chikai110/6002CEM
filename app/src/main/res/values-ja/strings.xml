@@ -11,6 +11,9 @@
     <string name="bottom_nav_profile_label">プロフィール</string>
     <string name="bottom_nav_language_label">言語</string>
 
+    <string name="item_release">公開日</string>
+    <string name="item_duration">上映時間</string>
+
     <string name="profile_img_desc">Profile Image</string>
     <string name="profile_email_label_text">Email</string>
     <string name="profile_mobile_label_text">Mobile Number</string>

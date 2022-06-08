@@ -40,7 +40,7 @@
                 android:id="@+id/label_item_release"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Release"
+                android:text="@string/item_release"
                 android:textColor="@color/gray" />
 
             <TextView
@@ -55,7 +55,7 @@
                 android:id="@+id/label_item_duration"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Duration"
+                android:text="@string/item_duration"
                 android:textColor="@color/gray" />
 
             <TextView
@@ -65,8 +65,6 @@
                 android:text="product_description"
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="@color/white" />
-
-
         </LinearLayout>
 
     </LinearLayout>
