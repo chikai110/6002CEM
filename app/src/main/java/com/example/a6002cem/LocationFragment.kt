@@ -16,6 +16,11 @@ import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.*
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import java.text.DateFormat
 import java.util.*
 
@@ -41,6 +46,8 @@ class LocationFragment : Fragment() {
     private var mLocationRequest: LocationRequest? = null
     private var mGeocoder: Geocoder? = null
     private var mLocationProvider: FusedLocationProviderClient? = null
+
+    private lateinit var mMap: GoogleMap
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -104,11 +111,34 @@ class LocationFragment : Fragment() {
         mLocationRequest!!.fastestInterval = 5
         mLocationRequest!!.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
 
-        view.findViewById<Button>(R.id.locateOnOff).setOnClickListener {
-            onStartClicked(view)
-        }
+        onStartClicked(view)
+
         view.findViewById<Button>(R.id.locate).setOnClickListener {
             onLocateClicked(view)
+
+            val supportMapFragment =
+                childFragmentManager.findFragmentById(R.id.map_fragment) as SupportMapFragment?
+
+            val currentLocation = LatLng(mLastLocation!!.latitude, mLastLocation!!.longitude)
+
+            // Async map
+            supportMapFragment!!.getMapAsync { googleMap ->
+                // When map is loaded
+
+                // Initialize marker options
+                val markerOptions = MarkerOptions()
+                // Set position of marker
+                markerOptions.position(currentLocation)
+                // Set title of marker
+                markerOptions.title(mOutput!!.text as String?)
+                // Remove all marker
+                googleMap.clear()
+                // Animating to zoom the marker
+                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 15F))
+                // Add marker on map
+                googleMap.addMarker(markerOptions)
+
+            }
         }
 
         return view
