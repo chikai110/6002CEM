@@ -3,6 +3,7 @@ package com.example.a6002cem
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
@@ -36,22 +37,10 @@ class MainActivity : AppCompatActivity(), FragmentNavigation{
         editTextName = findViewById<View>(R.id.nameText) as EditText
 
         sharedPreferences = getSharedPreferences("SharedPreMain", MODE_PRIVATE)
-        if (sharedPreferences!!.contains(LANG_KEY)) {
-            editTextName!!.setText(sharedPreferences!!.getString(LANG_KEY, "en"))
-        }
 
         fAuth = Firebase.auth
 
-        val currentUser = fAuth.currentUser
-        if(currentUser != null){
-            supportFragmentManager.beginTransaction()
-                .add(R.id.container, HomeFragment()).addToBackStack(null)
-                .commit()
-        }else {
-            supportFragmentManager.beginTransaction()
-                .add(R.id.container, LoginFragment())
-                .commit()
-        }
+        navigateFrag(HomeFragment(), true)
 
         bottomNav = findViewById<BottomNavigationView>(R.id.bottom_nav)
         bottomNav.setOnItemSelectedListener{
@@ -61,17 +50,28 @@ class MainActivity : AppCompatActivity(), FragmentNavigation{
                     return@setOnItemSelectedListener true
                 }
                 R.id.mapFragment -> {
-                    navigateFrag(ItemDetailsFragment(), true)
+                    navigateFrag(LocationFragment(), true)
                     return@setOnItemSelectedListener true
                 }
                 R.id.profileFragment -> {
-                    navigateFrag(ProfileFragment(), true)
-//                    save()
-//                    sharedPreferences!!.getString(LANG_KEY, "en")?.let { it1 -> setLocale(it1) }
+                    val currentUser = fAuth.currentUser
+                    if(currentUser != null){
+                        navigateFrag(ProfileFragment(), true)
+                    } else {
+                        navigateFrag(LoginFragment(), false)
+                    }
                     return@setOnItemSelectedListener true
                 }
                 R.id.languageFragment -> {
-                    return@setOnItemSelectedListener true
+                    var localeName = sharedPreferences!!.getString(LANG_KEY, "en")
+                    if (localeName == "en") {
+                        setLocale("ja")
+                        saveLocale("ja")
+                    }
+                    else {
+                        setLocale("en")
+                        saveLocale("en")
+                    }
                 }
             }
             false
@@ -94,9 +94,9 @@ class MainActivity : AppCompatActivity(), FragmentNavigation{
         }
     }
 
-    private fun save() {
+    private fun saveLocale(localeName: String) {
         val editor = sharedPreferences!!.edit()
-        editor.putString(LANG_KEY, editTextName!!.text.toString())
+        editor.putString(LANG_KEY, localeName)
         editor.commit()
     }
 

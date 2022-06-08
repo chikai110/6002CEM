@@ -31,8 +31,7 @@ class LoginFragment : Fragment() {
     private lateinit var promptInfo: BiometricPrompt.PromptInfo
 
     override fun onCreateView (
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragment_login, container, false)
@@ -55,26 +54,23 @@ class LoginFragment : Fragment() {
         biometricPrompt = BiometricPrompt(this, executor,
             object : BiometricPrompt.AuthenticationCallback() {
 
-                override fun onAuthenticationError(errorCode: Int,
-                                                   errString: CharSequence) {
+                override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
                     super.onAuthenticationError(errorCode, errString)
                     Toast.makeText(requireContext(),
-                        "Authentication error: $errString", Toast.LENGTH_SHORT)
-                        .show()
+                        "Authentication error: $errString", Toast.LENGTH_SHORT).show()
                 }
 
                 override fun onAuthenticationSucceeded(
                     result: BiometricPrompt.AuthenticationResult) {
                     super.onAuthenticationSucceeded(result)
                     var navHome = activity as FragmentNavigation
-                    navHome.navigateFrag(HomeFragment(), false)
+                    navHome.navigateFrag(ProfileFragment(), false)
                 }
 
                 override fun onAuthenticationFailed() {
                     super.onAuthenticationFailed()
                     Toast.makeText(requireContext(), "Authentication failed",
-                        Toast.LENGTH_SHORT)
-                        .show()
+                        Toast.LENGTH_SHORT).show()
                 }
 
             })
@@ -118,7 +114,7 @@ class LoginFragment : Fragment() {
                 task ->
             if(task.isSuccessful){
                 var navHome = activity as FragmentNavigation
-                navHome.navigateFrag(HomeFragment(), false)
+                navHome.navigateFrag(ProfileFragment(), false)
             }else{
                 btnLogin.isEnabled = true
                 btnLogin.alpha = 1.0f
@@ -144,7 +140,6 @@ class LoginFragment : Fragment() {
                     password.text.toString().isNotEmpty() -> {
 
                 if (username.text.toString().matches(Regex("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"))) {
-
                     firebaseSignIn()
                 } else {
                     username.setError("Please Enter Valid Email Id", icon)

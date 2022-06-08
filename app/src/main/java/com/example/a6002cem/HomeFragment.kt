@@ -24,22 +24,25 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragment_home, container, false)
 
-        database = FirebaseDatabase.getInstance("https://cem-98b80-default-rtdb.asia-southeast1.firebasedatabase.app")
+        database =
+            FirebaseDatabase.getInstance("https://cem-98b80-default-rtdb.asia-southeast1.firebasedatabase.app")
         reference = database?.getReference("items")
 
-        val firebaseListener = object: ValueEventListener {
+        val firebaseListener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 itemList.clear()
 
                 val child = snapshot.children
-                child.forEach{
-                    var items = Item(it.child("duration").value.toString(),
+                child.forEach {
+                    var items = Item(
+                        it.child("duration").value.toString(),
                         it.child("img").value.toString(),
                         it.child("info").value.toString(),
                         it.child("location").value.toString(),
                         it.child("rating").value.toString(),
                         it.child("release").value.toString(),
-                        it.child("title").value.toString())
+                        it.child("title").value.toString()
+                    )
 
                     itemList.add(items)
                 }
@@ -54,7 +57,8 @@ class HomeFragment : Fragment() {
 
         recyclerView = view.findViewById(R.id.recycler_view)
         recyclerView?.setHasFixedSize(true)
-        recyclerView?.layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL,false)
+        recyclerView?.layoutManager =
+            GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
         adapter = ItemAdapter(itemList)
         adapter!!.setOnItemClickListener(object : ItemAdapter.onItemClickListener {
             override fun onItemClick(position: Int) {
@@ -62,9 +66,9 @@ class HomeFragment : Fragment() {
 //                val bundle = Bundle()
 //                bundle.putString("param1", a)
                 var navItemDetails = activity as FragmentNavigation
-                val frag2 = ItemDetailsFragment.newInstance("a",null)
+                val frag2 = ItemDetailsFragment.newInstance("a", null)
 //                frag2.arguments = bundle
-                navItemDetails.navigateFrag(frag2,addToStack = true)
+                navItemDetails.navigateFrag(frag2, addToStack = true)
                 Log.d("test", "click $a")
             }
         })
