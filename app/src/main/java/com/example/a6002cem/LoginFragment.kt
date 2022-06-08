@@ -67,7 +67,7 @@ class LoginFragment : Fragment() {
                     result: BiometricPrompt.AuthenticationResult) {
                     super.onAuthenticationSucceeded(result)
                     var navHome = activity as FragmentNavigation
-                    navHome.navigateFrag(HomeFragment(),addToStack = true)
+                    navHome.navigateFrag(HomeFragment(), false)
                 }
 
                 override fun onAuthenticationFailed() {
@@ -118,7 +118,7 @@ class LoginFragment : Fragment() {
                 task ->
             if(task.isSuccessful){
                 var navHome = activity as FragmentNavigation
-                navHome.navigateFrag(HomeFragment(),addToStack = true)
+                navHome.navigateFrag(HomeFragment(), false)
             }else{
                 btnLogin.isEnabled = true
                 btnLogin.alpha = 1.0f

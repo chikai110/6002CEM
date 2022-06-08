@@ -35,7 +35,8 @@ class ItemAdapter(private var itemList:MutableList<Item>): RecyclerView.Adapter<
         Picasso.get().load(itemList[position].img)
             .into(holder.itemImage)
         holder.itemTitle.text = itemList[position].title
-        holder.itemPrice.text = itemList[position].price
+        holder.itemRelease.text = itemList[position].release
+        holder.itemDuration.text = itemList[position].duration
     }
 
     override fun getItemCount(): Int {
@@ -45,7 +46,8 @@ class ItemAdapter(private var itemList:MutableList<Item>): RecyclerView.Adapter<
     class ItemViewHolder(view: View, listener: onItemClickListener): RecyclerView.ViewHolder(view){
         var itemImage: ImageView = view.findViewById(R.id.item_image)
         var itemTitle: TextView = view.findViewById(R.id.item_title)
-        var itemPrice: TextView = view.findViewById(R.id.item_price)
+        var itemRelease: TextView = view.findViewById(R.id.item_release)
+        var itemDuration: TextView = view.findViewById(R.id.item_duration)
 
         init {
             itemView.setOnClickListener {

@@ -16,16 +16,18 @@ import com.google.firebase.ktx.Firebase
 import java.util.*
 
 class MainActivity : AppCompatActivity(), FragmentNavigation{
-    private lateinit var fAuth: FirebaseAuth
-    lateinit var bottomNav : BottomNavigationView
 
     companion object {
         const val LANG_KEY = "LANG_KEY"
     }
+
+    private lateinit var fAuth: FirebaseAuth
+
     private var editTextName: EditText? = null
     private var sharedPreferences: SharedPreferences? = null
-    lateinit var locale: Locale
     private var currentLang: String? = null
+    lateinit var locale: Locale
+    lateinit var bottomNav : BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,28 +52,31 @@ class MainActivity : AppCompatActivity(), FragmentNavigation{
                 .add(R.id.container, LoginFragment())
                 .commit()
         }
+
         bottomNav = findViewById<BottomNavigationView>(R.id.bottom_nav)
         bottomNav.setOnItemSelectedListener{
             when (it.itemId) {
                 R.id.homeFragment->{
-                    loadFragment(HomeFragment())
+                    navigateFrag(HomeFragment(), true)
                     return@setOnItemSelectedListener true
                 }
-                R.id.cartFragment -> {
-                    loadFragment(ItemDetailsFragment())
+                R.id.mapFragment -> {
+                    navigateFrag(ItemDetailsFragment(), true)
                     return@setOnItemSelectedListener true
                 }
-                R.id.accountFragment -> {
-                    loadFragment(ProfileFragment())
+                R.id.profileFragment -> {
+                    navigateFrag(ProfileFragment(), true)
 //                    save()
 //                    sharedPreferences!!.getString(LANG_KEY, "en")?.let { it1 -> setLocale(it1) }
+                    return@setOnItemSelectedListener true
+                }
+                R.id.languageFragment -> {
                     return@setOnItemSelectedListener true
                 }
             }
             false
         }
     }
-
 
     private fun setLocale(localeName: String) {
         if (localeName !== currentLang) {
@@ -93,13 +98,6 @@ class MainActivity : AppCompatActivity(), FragmentNavigation{
         val editor = sharedPreferences!!.edit()
         editor.putString(LANG_KEY, editTextName!!.text.toString())
         editor.commit()
-    }
-
-    private fun loadFragment(fragment: Fragment){
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.container,fragment)
-        transaction.addToBackStack(null)
-        transaction.commit()
     }
 
     override fun navigateFrag(fragment: Fragment, addToStack: Boolean) {

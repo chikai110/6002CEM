@@ -19,11 +19,6 @@ import com.google.firebase.ktx.Firebase
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [RegisterFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class RegisterFragment : Fragment() {
     private lateinit var username: EditText
     private lateinit var password: EditText
@@ -63,14 +58,12 @@ class RegisterFragment : Fragment() {
                 task ->
             if(task.isSuccessful){
                 var navHome = activity as FragmentNavigation
-                navHome.navigateFrag(HomeFragment(),addToStack = true)
+                navHome.navigateFrag(HomeFragment(),false)
             }else{
                 btnRegister.isEnabled = true
                 btnRegister.alpha = 1.0f
                 Toast.makeText(context,task.exception?.message,Toast.LENGTH_SHORT).show()
             }
-
-
         }
     }
 

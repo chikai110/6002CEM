@@ -33,10 +33,13 @@ class HomeFragment : Fragment() {
 
                 val child = snapshot.children
                 child.forEach{
-
-                    var items = Item(it.value.toString(), it.child("img").value.toString(),
-                        it.child("name").value.toString(),
-                        it.child("price").value.toString())
+                    var items = Item(it.child("duration").value.toString(),
+                        it.child("img").value.toString(),
+                        it.child("info").value.toString(),
+                        it.child("location").value.toString(),
+                        it.child("rating").value.toString(),
+                        it.child("release").value.toString(),
+                        it.child("title").value.toString())
 
                     itemList.add(items)
                 }
@@ -51,18 +54,15 @@ class HomeFragment : Fragment() {
 
         recyclerView = view.findViewById(R.id.recycler_view)
         recyclerView?.setHasFixedSize(true)
-        recyclerView?.layoutManager = GridLayoutManager(context,
-            2,
-            GridLayoutManager.VERTICAL,
-            false)
+        recyclerView?.layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL,false)
         adapter = ItemAdapter(itemList)
         adapter!!.setOnItemClickListener(object : ItemAdapter.onItemClickListener {
             override fun onItemClick(position: Int) {
-                var a = itemList[position].id
+                var a = itemList[position]
 //                val bundle = Bundle()
 //                bundle.putString("param1", a)
                 var navItemDetails = activity as FragmentNavigation
-                val frag2 = ItemDetailsFragment.newInstance(a,null)
+                val frag2 = ItemDetailsFragment.newInstance("a",null)
 //                frag2.arguments = bundle
                 navItemDetails.navigateFrag(frag2,addToStack = true)
                 Log.d("test", "click $a")
