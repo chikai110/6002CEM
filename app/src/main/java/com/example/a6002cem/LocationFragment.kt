@@ -23,6 +23,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import java.text.DateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -120,24 +121,23 @@ class LocationFragment : Fragment() {
                 childFragmentManager.findFragmentById(R.id.map_fragment) as SupportMapFragment?
 
             val currentLocation = LatLng(mLastLocation!!.latitude, mLastLocation!!.longitude)
+            val cinema1 = LatLng(22.3981, 113.9746)
+            val cinema2 = LatLng(22.3988, 113.9754)
 
             // Async map
             supportMapFragment!!.getMapAsync { googleMap ->
-                // When map is loaded
-
                 // Initialize marker options
-                val markerOptions = MarkerOptions()
-                // Set position of marker
-                markerOptions.position(currentLocation)
-                // Set title of marker
-                markerOptions.title(mOutput!!.text as String?)
+                var markerOptionsList = ArrayList<MarkerOptions>()
+                markerOptionsList.add(MarkerOptions().position(currentLocation).title(mOutput!!.text as String?))
+                markerOptionsList.add(MarkerOptions().position(cinema1).title("Paris London New York Milano Cinema"))
+                markerOptionsList.add(MarkerOptions().position(cinema2).title("Hyland Theatre"))
                 // Remove all marker
-                googleMap.clear()
+//                googleMap.clear()
                 // Animating to zoom the marker
                 googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 15F))
                 // Add marker on map
-                googleMap.addMarker(markerOptions)
-
+                markerOptionsList.forEach {
+                    googleMap.addMarker(it)}
             }
         }
 
