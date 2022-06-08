@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:text="Title"
                 android:textAppearance="?attr/textAppearanceHeadline6"
-                android:textColor="@color/white" />
+                android:textColor="@color/gold" />
 
             <TextView
                 android:id="@+id/label_item_release"

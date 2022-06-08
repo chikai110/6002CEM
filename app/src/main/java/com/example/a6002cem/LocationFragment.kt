@@ -1,11 +1,14 @@
 package com.example.a6002cem
 
 import android.Manifest
+import android.content.Context
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
 import android.os.Looper
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -25,15 +28,9 @@ import java.text.DateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 class LocationFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var sharedPreferences: SharedPreferences? = null
 
     // member views
     private var mLatitudeText: TextView? = null
@@ -49,14 +46,6 @@ class LocationFragment : Fragment() {
     private var mLocationProvider: FusedLocationProviderClient? = null
 
     private lateinit var mMap: GoogleMap
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -112,7 +101,9 @@ class LocationFragment : Fragment() {
         mLocationRequest!!.fastestInterval = 5
         mLocationRequest!!.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
 
-        onStartClicked(view)
+        view.findViewById<Button>(R.id.locateOnOff).setOnClickListener {
+            onStartClicked(view)
+        }
 
         view.findViewById<Button>(R.id.locate).setOnClickListener {
             onLocateClicked(view)
@@ -164,6 +155,7 @@ class LocationFragment : Fragment() {
     }
 
     private fun onLocateClicked (v : View) {
+
         mGeocoder = Geocoder(requireContext())
         try {
             // Only 1 address is needed here.
@@ -186,6 +178,11 @@ class LocationFragment : Fragment() {
                     addressLines.append(address.getAddressLine(0))
                 }
                 mOutput!!.text = addressLines
+                sharedPreferences = requireActivity().getSharedPreferences("SharedPreMain", Context.MODE_PRIVATE)
+                val editor = sharedPreferences!!.edit()
+                editor.putString(MainActivity.CURRENT_LOCATION, addresses[0].countryName.toString())
+                editor.commit()
+
             } else {
                 mOutput!!.text = "WARNING! Geocoder returned more than 1 addresses!"
             }
@@ -204,13 +201,5 @@ class LocationFragment : Fragment() {
 
     companion object {
         var REQUEST_LOCATION = 1
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            LocationFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
     }
 }

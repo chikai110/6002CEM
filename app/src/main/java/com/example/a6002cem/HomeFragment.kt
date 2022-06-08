@@ -1,19 +1,23 @@
 package com.example.a6002cem
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
+
 
 class HomeFragment : Fragment() {
     var recyclerView: RecyclerView? = null
     var adapter: ItemAdapter? = null
     var itemList = ArrayList<Item>()
+    private var sharedPreferences: SharedPreferences? = null
     private var database: FirebaseDatabase? = null
     private var reference: DatabaseReference? = null
 
@@ -28,23 +32,29 @@ class HomeFragment : Fragment() {
             FirebaseDatabase.getInstance("https://cem-98b80-default-rtdb.asia-southeast1.firebasedatabase.app")
         reference = database?.getReference("items")
 
+        sharedPreferences = requireActivity().getSharedPreferences("SharedPreMain", Context.MODE_PRIVATE)
+        var currentCountry = sharedPreferences!!.getString(MainActivity.CURRENT_LOCATION, "Hong Kong")
+        if (currentCountry != null) {
+            Log.d("test44", currentCountry)
+        }
         val firebaseListener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 itemList.clear()
 
                 val child = snapshot.children
                 child.forEach {
-                    var items = Item(
-                        it.child("duration").value.toString(),
-                        it.child("img").value.toString(),
-                        it.child("info").value.toString(),
-                        it.child("location").value.toString(),
-                        it.child("rating").value.toString(),
-                        it.child("release").value.toString(),
-                        it.child("title").value.toString()
-                    )
-
-                    itemList.add(items)
+                    if (it.child("location").value.toString() == currentCountry) {
+                        var items = Item(
+                            it.child("duration").value.toString(),
+                            it.child("img").value.toString(),
+                            it.child("info").value.toString(),
+                            it.child("location").value.toString(),
+                            it.child("rating").value.toString(),
+                            it.child("release").value.toString(),
+                            it.child("title").value.toString()
+                        )
+                        itemList.add(items)
+                    }
                 }
                 adapter?.notifyDataSetChanged()
             }

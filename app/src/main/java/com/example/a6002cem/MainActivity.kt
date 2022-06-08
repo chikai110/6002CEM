@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity(), FragmentNavigation{
 
     companion object {
         const val LANG_KEY = "LANG_KEY"
+        const val CURRENT_LOCATION = "CURRENT_LOCATION"
     }
     private lateinit var fAuth: FirebaseAuth
     private var sharedPreferences: SharedPreferences? = null
@@ -32,7 +33,6 @@ class MainActivity : AppCompatActivity(), FragmentNavigation{
         setContentView(R.layout.activity_main)
 
         sharedPreferences = getSharedPreferences("SharedPreMain", MODE_PRIVATE)
-
         fAuth = Firebase.auth
 
         navigateFrag(HomeFragment(), true)
