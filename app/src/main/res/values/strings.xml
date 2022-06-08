@@ -1,8 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">6002CEM</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="thank_you">ありがとう</string>
+    <string name="app_name">Movies App (6002CEM)</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
     <string name="username">Username</string>
@@ -16,7 +14,6 @@
     <string name="profile_img_desc">Profile Image</string>
     <string name="profile_email_label_text">Email</string>
     <string name="profile_mobile_label_text">Mobile Number</string>
-
     <string name="pro_details_like_btn_desc">Like Button</string>
     <string name="pro_details_select_size_lable_text">Select Size</string>
     <string name="pro_details_select_color_label_text">Select Color</string>

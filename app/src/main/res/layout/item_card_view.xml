@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardBackgroundColor="#B1C1AEE1"
-    app:cardElevation="2dp"
-    android:layout_marginTop="10dp"
     android:layout_marginStart="6dp"
+    android:layout_marginTop="10dp"
     android:layout_marginEnd="6dp"
+    app:cardBackgroundColor="@color/black"
+    app:cardElevation="2dp"
     app:cardPreventCornerOverlap="true">
 
     <LinearLayout
@@ -21,7 +20,7 @@
             android:layout_width="190dp"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,33 +33,38 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Title"
-                android:textAppearance="?attr/textAppearanceHeadline6"/>
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="@color/white" />
 
             <TextView
                 android:id="@+id/label_item_release"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Release" />
+                android:text="Release"
+                android:textColor="@color/gray" />
 
             <TextView
                 android:id="@+id/item_release"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="product_description"
-                android:textAppearance="?attr/textAppearanceBody2" />
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:textColor="@color/white" />
 
             <TextView
                 android:id="@+id/label_item_duration"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Duration" />
+                android:text="Duration"
+                android:textColor="@color/gray" />
 
             <TextView
                 android:id="@+id/item_duration"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="product_description"
-                android:textAppearance="?attr/textAppearanceBody2"/>
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:textColor="@color/white" />
 
 
         </LinearLayout>
