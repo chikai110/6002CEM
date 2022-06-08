@@ -21,10 +21,7 @@ class MainActivity : AppCompatActivity(), FragmentNavigation{
     companion object {
         const val LANG_KEY = "LANG_KEY"
     }
-
     private lateinit var fAuth: FirebaseAuth
-
-    private var editTextName: EditText? = null
     private var sharedPreferences: SharedPreferences? = null
     private var currentLang: String? = null
     lateinit var locale: Locale
@@ -33,8 +30,6 @@ class MainActivity : AppCompatActivity(), FragmentNavigation{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        editTextName = findViewById<View>(R.id.nameText) as EditText
 
         sharedPreferences = getSharedPreferences("SharedPreMain", MODE_PRIVATE)
 

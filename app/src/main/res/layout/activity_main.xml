@@ -27,29 +27,4 @@
         app:itemTextColor="@drawable/bottom_nav_selector"
         app:menu="@menu/bottom_navigation_menu" />
 
-    <TextView
-        android:id="@+id/question1Header"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/thank_you"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/nameText"
-        android:layout_width="wrap_content"
-
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="text|textPersonName"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        app:layout_constraintStart_toEndOf="@id/question1Header"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
