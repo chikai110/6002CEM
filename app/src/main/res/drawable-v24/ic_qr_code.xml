@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="100dp"
+    android:height="100dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+
+    <path
+        android:fillColor="#000000"
+        android:strokeWidth="1"
+        android:pathData="M75,70L75,45L75,25L55,25L45,25L25,25L25,45L25,55L25,75L45,75L75,75L75,70ZM60,30L70,30L70,40L60,40L60,30ZM30,30L40,30L40,40L30,40L30,30ZM40,70L30,70L30,60L40,60L40,70ZM45,70L45,65L50,65L50,70L45,70ZM55,70L55,65L55,60L45,60L45,55L40,55L40,50L35,50L35,55L30,55L30,50L35,50L35,45L40,45L40,50L45,50L45,45L45,40L50,40L50,35L45,35L45,30L50,30L50,35L55,35L55,40L50,40L50,45L50,50L45,50L45,55L50,55L55,55L55,50L55,45L65,45L65,50L70,50L70,55L65,55L65,50L60,50L60,55L55,55L55,60L60,60L60,65L65,65L65,60L70,60L70,65L65,65L65,70L55,70Z" />
+    <path
+        android:fillColor="#000000"
+        android:strokeWidth="1"
+        android:pathData="M15,15L30,15L30,10L10,10L10,30L15,30Z" />
+    <path
+        android:fillColor="#000000"
+        android:strokeWidth="1"
+        android:pathData="M15,70L10,70L10,90L30,90L30,85L15,85Z" />
+    <path
+        android:fillColor="#000000"
+        android:strokeWidth="1"
+        android:pathData="M85,85L70,85L70,90L90,90L90,70L85,70Z" />
+    <path
+        android:fillColor="#000000"
+        android:strokeWidth="1"
+        android:pathData="M70,10L70,15L85,15L85,30L90,30L90,10Z" />
+</vector>

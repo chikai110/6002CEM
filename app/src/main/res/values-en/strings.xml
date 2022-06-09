@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Movies App (6002CEM)</string>
+    <string name="app_name">Movie+ (6002CEM)</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
     <string name="username">Username</string>
@@ -8,6 +8,7 @@
 
     <string name="bottom_nav_home_label">Home</string>
     <string name="bottom_nav_map_label">Location</string>
+    <string name="bottom_nav_qrcode_label">QR Code Ticket</string>
     <string name="bottom_nav_profile_label">Profile</string>
     <string name="bottom_nav_language_label">Language</string>
 

@@ -9,6 +9,7 @@
         <entry key="..\:/Users/chikai/AndroidStudioProjects/6002CEM/app/src/main/res/drawable-v24/ic_location.xml" value="0.1475" />
         <entry key="..\:/Users/chikai/AndroidStudioProjects/6002CEM/app/src/main/res/drawable-v24/ic_outline_library_books_24.xml" value="0.1" />
         <entry key="..\:/Users/chikai/AndroidStudioProjects/6002CEM/app/src/main/res/drawable-v24/ic_outlined_person_24.xml" value="0.199" />
+        <entry key="..\:/Users/chikai/AndroidStudioProjects/6002CEM/app/src/main/res/drawable-v24/ic_qr_code.xml" value="0.1" />
         <entry key="..\:/Users/chikai/AndroidStudioProjects/6002CEM/app/src/main/res/drawable/avatar_background.xml" value="0.1325" />
         <entry key="..\:/Users/chikai/AndroidStudioProjects/6002CEM/app/src/main/res/drawable/ic_outline_arrow_back_24.xml" value="0.1325" />
         <entry key="..\:/Users/chikai/AndroidStudioProjects/6002CEM/app/src/main/res/layout/activity_main.xml" value="0.17831813576494426" />
@@ -21,6 +22,7 @@
         <entry key="..\:/Users/chikai/AndroidStudioProjects/6002CEM/app/src/main/res/layout/fragment_navigation.xml" value="0.15081405312767782" />
         <entry key="..\:/Users/chikai/AndroidStudioProjects/6002CEM/app/src/main/res/layout/fragment_profile.xml" value="0.31842105263157894" />
         <entry key="..\:/Users/chikai/AndroidStudioProjects/6002CEM/app/src/main/res/layout/fragment_q_r_code.xml" value="0.15833333333333333" />
+        <entry key="..\:/Users/chikai/AndroidStudioProjects/6002CEM/app/src/main/res/layout/fragment_qr_code_ticket.xml" value="0.182518115942029" />
         <entry key="..\:/Users/chikai/AndroidStudioProjects/6002CEM/app/src/main/res/layout/fragment_register.xml" value="0.33" />
         <entry key="..\:/Users/chikai/AndroidStudioProjects/6002CEM/app/src/main/res/layout/images_item.xml" value="0.175" />
         <entry key="..\:/Users/chikai/AndroidStudioProjects/6002CEM/app/src/main/res/layout/item_card_view.xml" value="0.2969298245614035" />

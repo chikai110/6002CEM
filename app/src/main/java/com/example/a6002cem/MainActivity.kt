@@ -49,6 +49,10 @@ class MainActivity : AppCompatActivity(), FragmentNavigation{
                     navigateFrag(LocationFragment(), true)
                     return@setOnItemSelectedListener true
                 }
+                R.id.qrcodeFragment -> {
+                    navigateFrag(QRCodeTicketFragment(), true)
+                    return@setOnItemSelectedListener true
+                }
                 R.id.profileFragment -> {
                     val currentUser = fAuth.currentUser
                     if(currentUser != null){

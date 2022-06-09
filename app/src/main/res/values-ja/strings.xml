@@ -8,6 +8,7 @@
 
     <string name="bottom_nav_home_label">ホーム</string>
     <string name="bottom_nav_map_label">位置</string>
+    <string name="bottom_nav_qrcode_label">e-チケット</string>
     <string name="bottom_nav_profile_label">プロフィール</string>
     <string name="bottom_nav_language_label">言語</string>
 

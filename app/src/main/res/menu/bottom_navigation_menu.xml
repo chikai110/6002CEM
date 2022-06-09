@@ -11,6 +11,11 @@
         android:icon="@drawable/ic_location"
         android:title="@string/bottom_nav_map_label"/>
     <item
+        android:id="@+id/qrcodeFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_qr_code"
+        android:title="@string/bottom_nav_qrcode_label" />
+    <item
         android:id="@+id/profileFragment"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_person_24"
