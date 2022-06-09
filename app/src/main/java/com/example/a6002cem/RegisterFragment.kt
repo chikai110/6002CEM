@@ -97,7 +97,7 @@ class RegisterFragment : Fragment() {
 //                            Toast.makeText(context,"Register Successful",Toast.LENGTH_SHORT).show()
                         }
                         else{
-                            cnfPassword.setError("Password din't match",icon)
+                            cnfPassword.setError("Password does not match",icon)
                         }
                     }
                     else{
@@ -105,7 +105,7 @@ class RegisterFragment : Fragment() {
                     }
 
                 }else{
-                    username.setError("Please Enter Valid Email Id",icon)
+                    username.setError("Please Enter Valid Email Address",icon)
                 }
             }
 

@@ -19,8 +19,8 @@
     <string name="location_currentLocation">現在位置</string>
 
     <string name="profile_img_desc">Profile Image</string>
-    <string name="profile_email_label_text">Email</string>
-    <string name="profile_mobile_label_text">Mobile Number</string>
+    <string name="profile_email_label_text">メール</string>
+    <string name="profile_mobile_label_text">携帯番号</string>
 
     <string name="item_detail_image_desc">ポスター画像</string>
     <string name="item_details_like_btn_desc">いいね</string>

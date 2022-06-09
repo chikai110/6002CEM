@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity(), FragmentNavigation{
     companion object {
         const val LANG_KEY = "LANG_KEY"
         const val CURRENT_LOCATION = "CURRENT_LOCATION"
+        const val USER_ID = "USER_ID"
     }
     private lateinit var fAuth: FirebaseAuth
     private var sharedPreferences: SharedPreferences? = null

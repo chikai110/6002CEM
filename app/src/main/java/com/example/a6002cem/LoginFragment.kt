@@ -1,5 +1,6 @@
 package com.example.a6002cem
 
+import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.TextUtils
@@ -26,6 +27,7 @@ class LoginFragment : Fragment() {
     private lateinit var password: EditText
     private lateinit var fAuth: FirebaseAuth
 
+    private var sharedPreferences: SharedPreferences? = null
     private lateinit var executor: Executor
     private lateinit var biometricPrompt: BiometricPrompt
     private lateinit var promptInfo: BiometricPrompt.PromptInfo
@@ -115,6 +117,14 @@ class LoginFragment : Fragment() {
             if(task.isSuccessful){
                 var navHome = activity as FragmentNavigation
                 navHome.navigateFrag(ProfileFragment(), false)
+                val currentUser = fAuth.currentUser
+
+                sharedPreferences = requireActivity().getSharedPreferences("SharedPreMain", Context.MODE_PRIVATE)
+                val editor = sharedPreferences!!.edit()
+                if (currentUser != null) {
+                    editor.putString(MainActivity.USER_ID, currentUser.uid)
+                }
+                editor.commit()
             }else{
                 btnLogin.isEnabled = true
                 btnLogin.alpha = 1.0f
@@ -142,7 +152,7 @@ class LoginFragment : Fragment() {
                 if (username.text.toString().matches(Regex("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"))) {
                     firebaseSignIn()
                 } else {
-                    username.setError("Please Enter Valid Email Id", icon)
+                    username.setError("Please Enter Valid Email Address", icon)
                 }
             }
         }

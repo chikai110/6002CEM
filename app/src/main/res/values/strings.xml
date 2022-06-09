@@ -27,4 +27,6 @@
     <string name="item_details_info_label_text">Info</string>
     <string name="item_details_release_label_text">Release</string>
     <string name="item_details_duration_label_text">Duration</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
