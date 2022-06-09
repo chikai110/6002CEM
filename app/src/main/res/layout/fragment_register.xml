@@ -24,7 +24,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="11dp"
+            android:layout_marginTop="8dp"
             android:shadowColor="@color/black"
             android:shadowDx="2"
             android:shadowDy="2"
@@ -32,7 +32,8 @@
             android:text="Movie+"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textColor="@color/gold"
-            android:textSize="50sp" />
+            android:textSize="50sp"
+            android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -71,7 +72,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="confirm_password"
+            android:hint="Confirm Password"
             app:boxBackgroundColor="@color/mtrl_textinput_default_box_stroke_color"
             android:layout_marginTop="10dp"
             android:layout_marginStart="40dp"
@@ -107,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:text="Register"
                 android:layout_toStartOf="@id/btn_login_reg"
-                android:layout_marginEnd="40dp"
+                android:layout_marginEnd="20dp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 app:backgroundTint="@color/gold" />
