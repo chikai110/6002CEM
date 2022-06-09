@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="24dp"
         android:text="latitude"
         android:textIsSelectable="true"
         android:textSize="16sp"/>
@@ -47,50 +47,43 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="96dp"
-        android:text="Time:"/>
+        android:text="Current Location:"/>
 
     <TextView
-        android:id="@+id/time_text"
+        android:id="@+id/current_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="120dp"
-        android:text="time"
-        android:textIsSelectable="true"
+        android:text="location"
         android:textSize="16sp"/>
 
     <LinearLayout
         android:id="@+id/locationButton"
         android:layout_width="match_parent"
         android:layout_height="561dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="160dp"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/locateOnOff"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="on/off" />
+            android:text="GPS" />
 
         <Button
             android:id="@+id/locate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Locate" />
+            android:text="Locate"
+            android:layout_marginLeft="10dp"/>
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/output"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:text="output area"
-        android:layout_marginTop="200dp"/>
 
     <fragment
         android:id="@+id/map_fragment"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginTop="250dp"/>
+        android:layout_height="350dp"
+        android:layout_marginTop="220dp"/>
 </RelativeLayout>
