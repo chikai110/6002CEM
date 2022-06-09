@@ -14,15 +14,17 @@
     <string name="item_release">公開日</string>
     <string name="item_duration">上映時間</string>
 
+    <string name="location_latitude">緯度</string>
+    <string name="location_longitude">経度</string>
+    <string name="location_currentLocation">現在位置</string>
+
     <string name="profile_img_desc">Profile Image</string>
     <string name="profile_email_label_text">Email</string>
     <string name="profile_mobile_label_text">Mobile Number</string>
-    <string name="pro_details_like_btn_desc">Like Button</string>
-    <string name="pro_details_select_size_lable_text">Select Size</string>
-    <string name="pro_details_select_color_label_text">Select Color</string>
-    <string name="pro_details_specif_label_text">Specification</string>
-    <string name="pro_details_price_value">$%s</string>
-    <string name="pro_details_actual_strike_value">$%s</string>
-    <string name="pro_details_add_to_cart_btn_text">Add To Cart</string>
-    <string name="product_detail_image_desc">Product Image</string>
+
+    <string name="item_detail_image_desc">ポスター画像</string>
+    <string name="item_details_like_btn_desc">いいね</string>
+    <string name="item_details_info_label_text">解説</string>
+    <string name="item_details_release_label_text">公開日</string>
+    <string name="item_details_duration_label_text">上映時間</string>
 </resources>

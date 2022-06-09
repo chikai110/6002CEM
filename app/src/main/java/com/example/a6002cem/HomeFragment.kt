@@ -34,9 +34,7 @@ class HomeFragment : Fragment() {
 
         sharedPreferences = requireActivity().getSharedPreferences("SharedPreMain", Context.MODE_PRIVATE)
         var currentCountry = sharedPreferences!!.getString(MainActivity.CURRENT_LOCATION, "Hong Kong")
-        if (currentCountry != null) {
-            Log.d("test44", currentCountry)
-        }
+
         val firebaseListener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 itemList.clear()
@@ -45,6 +43,7 @@ class HomeFragment : Fragment() {
                 child.forEach {
                     if (it.child("location").value.toString() == currentCountry) {
                         var items = Item(
+                            it.key.toString(),
                             it.child("duration").value.toString(),
                             it.child("img").value.toString(),
                             it.child("info").value.toString(),
@@ -72,14 +71,10 @@ class HomeFragment : Fragment() {
         adapter = ItemAdapter(itemList)
         adapter!!.setOnItemClickListener(object : ItemAdapter.onItemClickListener {
             override fun onItemClick(position: Int) {
-                var a = itemList[position]
-//                val bundle = Bundle()
-//                bundle.putString("param1", a)
+                var movieId = itemList[position].key
+                val itemDetailsFragment = ItemDetailsFragment.newInstance(movieId)
                 var navItemDetails = activity as FragmentNavigation
-                val frag2 = ItemDetailsFragment.newInstance("a", null)
-//                frag2.arguments = bundle
-                navItemDetails.navigateFrag(frag2, addToStack = true)
-                Log.d("test", "click $a")
+                navItemDetails.navigateFrag(itemDetailsFragment, true)
             }
         })
 

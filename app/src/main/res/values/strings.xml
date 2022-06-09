@@ -14,15 +14,17 @@
     <string name="item_release">Release</string>
     <string name="item_duration">Duration</string>
 
+    <string name="location_latitude">Latitude</string>
+    <string name="location_longitude">Longitude</string>
+    <string name="location_currentLocation">Current Location</string>
+
     <string name="profile_img_desc">Profile Image</string>
     <string name="profile_email_label_text">Email</string>
     <string name="profile_mobile_label_text">Mobile Number</string>
-    <string name="pro_details_like_btn_desc">Like Button</string>
-    <string name="pro_details_select_size_lable_text">Select Size</string>
-    <string name="pro_details_select_color_label_text">Select Color</string>
-    <string name="pro_details_specif_label_text">Specification</string>
-    <string name="pro_details_price_value">$%s</string>
-    <string name="pro_details_actual_strike_value">$%s</string>
-    <string name="pro_details_add_to_cart_btn_text">Add To Cart</string>
-    <string name="product_detail_image_desc">Product Image</string>
+
+    <string name="item_detail_image_desc">Movie Poster</string>
+    <string name="item_details_like_btn_desc">Like Button</string>
+    <string name="item_details_info_label_text">Info</string>
+    <string name="item_details_release_label_text">Release</string>
+    <string name="item_details_duration_label_text">Duration</string>
 </resources>

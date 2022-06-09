@@ -118,8 +118,6 @@ class LocationFragment : Fragment() {
                 markerOptionsList.add(MarkerOptions().position(currentLocation).title(mLocationText!!.text as String?))
                 markerOptionsList.add(MarkerOptions().position(cinema1).title("Paris London New York Milano Cinema"))
                 markerOptionsList.add(MarkerOptions().position(cinema2).title("Hyland Theatre"))
-                // Remove all marker
-//                googleMap.clear()
                 // Animating to zoom the marker
                 googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 15F))
                 // Add marker on map
@@ -178,7 +176,6 @@ class LocationFragment : Fragment() {
                 val editor = sharedPreferences!!.edit()
                 editor.putString(MainActivity.CURRENT_LOCATION, addresses[0].countryName.toString())
                 editor.commit()
-
             } else {
                 mLocationText!!.text = "WARNING! Geocoder returned more than 1 addresses!"
             }

@@ -21,11 +21,7 @@ class ItemAdapter(private var itemList:MutableList<Item>): RecyclerView.Adapter<
         mListener = listener
     }
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ):ItemViewHolder {
-
+    override fun onCreateViewHolder( parent: ViewGroup, viewType: Int ):ItemViewHolder {
         val layoutView: View = LayoutInflater.from(parent.context).
         inflate(R.layout.item_card_view,parent,false)
         return ItemViewHolder(layoutView, mListener)
