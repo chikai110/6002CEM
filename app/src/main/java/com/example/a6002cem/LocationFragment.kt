@@ -15,17 +15,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import java.text.DateFormat
-import java.util.*
+import org.json.JSONObject
+import java.net.URL
+import java.util.concurrent.Callable
+import java.util.concurrent.Executors
 import kotlin.collections.ArrayList
 
 
@@ -37,6 +39,7 @@ class LocationFragment : Fragment() {
     private var mLongitudeText: TextView? = null
     private var mLocationText: TextView? = null
     private var mLocateButton: Button? = null
+    private var mTemperatureText: TextView? = null
 
     // member variables that hold location info
     private var mLastLocation: Location? = null
@@ -55,11 +58,13 @@ class LocationFragment : Fragment() {
         mLongitudeText = view.findViewById<View>(R.id.longitude_text) as TextView
         mLocationText = view.findViewById<View>(R.id.current_location) as TextView
         mLocateButton = view.findViewById<View>(R.id.locate) as Button
+        mTemperatureText = view.findViewById<View>(R.id.temperature) as TextView
 
         // below are placeholder values used when the app doesn't have the permission
         mLatitudeText!!.text = "Latitude not available yet"
         mLongitudeText!!.text = "Longitude not available yet"
         mLocationText!!.text = ""
+        mTemperatureText!!.text = "Temperature Not available yet"
 
         val locationPermissionRequest = registerForActivityResult(
             ActivityResultContracts.RequestMultiplePermissions(),
@@ -176,6 +181,7 @@ class LocationFragment : Fragment() {
                 val editor = sharedPreferences!!.edit()
                 editor.putString(MainActivity.CURRENT_LOCATION, addresses[0].countryName.toString())
                 editor.commit()
+                getWeatherAPI(addresses[0].countryName)
             } else {
                 mLocationText!!.text = "WARNING! Geocoder returned more than 1 addresses!"
             }
@@ -183,12 +189,26 @@ class LocationFragment : Fragment() {
         }
     }
 
-    var mLocationCallBack: LocationCallback = object : LocationCallback() {
+    private var mLocationCallBack: LocationCallback = object : LocationCallback() {
         override fun onLocationResult(result: LocationResult) {
             mLastLocation = result.lastLocation
             mLatitudeText!!.text = mLastLocation!!.latitude.toString()
             mLongitudeText!!.text = mLastLocation!!.longitude.toString()
         }
+    }
+
+    private fun getWeatherAPI(location: String) {
+
+        val callable = Callable { val json =
+            URL("https://api.openweathermap.org/data/2.5/weather?q=$location&units=metric&appid=4cf7f6610d941a1ca7583f50e7e41ba3").readText()
+            Log.d("Weather Report", json)
+            val jsonObj = JSONObject(json)
+            val main = jsonObj.getJSONObject("main")
+            return@Callable main.getString("temp")+"°C"
+        }
+        val future = Executors.newSingleThreadExecutor().submit(callable)
+        mTemperatureText!!.text = future.get()
+
     }
 
     companion object {
