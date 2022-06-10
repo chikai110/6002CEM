@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
 
-
 class HomeFragment : Fragment() {
     var recyclerView: RecyclerView? = null
     var adapter: ItemAdapter? = null
@@ -36,6 +35,7 @@ class HomeFragment : Fragment() {
         sharedPreferences = requireActivity().getSharedPreferences("SharedPreMain", Context.MODE_PRIVATE)
         var currentCountry = sharedPreferences!!.getString(MainActivity.CURRENT_LOCATION, "Hong Kong")
 
+        // Getting real time database data
         val firebaseListener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 itemList.clear()

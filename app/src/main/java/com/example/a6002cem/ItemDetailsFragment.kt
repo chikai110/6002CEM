@@ -50,6 +50,7 @@ class ItemDetailsFragment : Fragment() {
         mRatingText = view.findViewById<View>(R.id.item_details_rating_bar) as RatingBar
         mInfoText = view.findViewById<View>(R.id.item_details_info_text) as TextView
 
+        // Getting real time database data
         val firebaseListener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 // Set the data to the item details view

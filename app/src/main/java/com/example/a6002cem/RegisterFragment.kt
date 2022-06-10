@@ -44,6 +44,7 @@ class RegisterFragment : Fragment() {
 
     }
 
+    // Register new user account to firebase
     private fun firebaseSignUp() {
         val btnRegister = view?.findViewById(R.id.btn_register_reg) as Button
         btnRegister.isEnabled = false
@@ -52,6 +53,7 @@ class RegisterFragment : Fragment() {
             password.text.toString()).addOnCompleteListener{
                 task ->
             if(task.isSuccessful){
+                // Navigate to Home Fragment when register success
                 var navHome = activity as FragmentNavigation
                 navHome.navigateFrag(HomeFragment(),false)
             }else{
@@ -62,6 +64,7 @@ class RegisterFragment : Fragment() {
         }
     }
 
+    // Validate user input data
     private fun validateEmptyForm(){
         val icon = AppCompatResources.getDrawable(requireContext(),
             R.drawable.ic_warning)
@@ -87,9 +90,8 @@ class RegisterFragment : Fragment() {
                     if(password.text.toString().length>=5){
 
                         if(password.text.toString() == cnfPassword.text.toString()){
-
                             firebaseSignUp()
-//                            Toast.makeText(context,"Register Successful",Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context,"Register Successful",Toast.LENGTH_SHORT).show()
                         }
                         else{
                             cnfPassword.setError("Password does not match",icon)

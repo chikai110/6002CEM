@@ -20,6 +20,7 @@ class ProfileFragment : Fragment() {
     private var database: FirebaseDatabase? = null
     private var reference: DatabaseReference? = null
 
+    // member variables that hold profile info
     private var mUserImage: ImageView? = null
     private var mUserNameText: TextView? = null
     private var mEmailText: TextView? = null
@@ -34,7 +35,9 @@ class ProfileFragment : Fragment() {
         database = FirebaseDatabase.getInstance("https://cem-98b80-default-rtdb.asia-southeast1.firebasedatabase.app")
 
         sharedPreferences = requireActivity().getSharedPreferences("SharedPreMain", Context.MODE_PRIVATE)
+        // Load user Id from sharedPreferences
         var userId = sharedPreferences!!.getString(MainActivity.USER_ID, "")
+        // Get the data by user Id
         reference = database?.getReference("users")?.child(userId!!)
 
         mUserImage = view.findViewById(R.id.profile_image_view)
@@ -42,7 +45,7 @@ class ProfileFragment : Fragment() {
         mEmailText = view.findViewById<View>(R.id.profile_email_tv) as TextView
         mMobileText = view.findViewById<View>(R.id.profile_mobile_tv) as TextView
 
-
+        // Getting real time database data
         val firebaseListener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 Picasso.get().load(snapshot.child("avatar").value as String?)
@@ -57,6 +60,7 @@ class ProfileFragment : Fragment() {
         }
         reference?.addListenerForSingleValueEvent(firebaseListener)
 
+        // Add the back page on click function
         var topAppBar = view.findViewById<View>(R.id.topAppBar) as MaterialToolbar
         topAppBar.setOnClickListener {
             var navItemDetails = activity as FragmentNavigation

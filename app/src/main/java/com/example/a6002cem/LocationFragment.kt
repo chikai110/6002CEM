@@ -122,6 +122,7 @@ class LocationFragment : Fragment() {
             supportMapFragment!!.getMapAsync { googleMap ->
                 // Initialize marker options
                 var markerOptionsList = ArrayList<MarkerOptions>()
+                // Set the title for the cinema markers
                 markerOptionsList.add(MarkerOptions().position(currentLocation).title(mLocationText!!.text as String?))
                 markerOptionsList.add(MarkerOptions().position(cinema1).title("Paris London New York Milano Cinema"))
                 markerOptionsList.add(MarkerOptions().position(cinema2).title("Hyland Theatre"))
@@ -167,6 +168,7 @@ class LocationFragment : Fragment() {
             )
             if (addresses.size == 1) {
                 val address = addresses[0]
+                // Combine address into single line
                 val addressLines = StringBuilder()
                 if (address.maxAddressLineIndex > 0) {
                     for (i in 0 until address.maxAddressLineIndex) {
@@ -197,6 +199,7 @@ class LocationFragment : Fragment() {
 
     private var mLocationCallBack: LocationCallback = object : LocationCallback() {
         override fun onLocationResult(result: LocationResult) {
+            // Set the result to the UI view
             mLastLocation = result.lastLocation
             mLatitudeText!!.text = mLastLocation!!.latitude.toString()
             mLongitudeText!!.text = mLastLocation!!.longitude.toString()
@@ -206,6 +209,7 @@ class LocationFragment : Fragment() {
     // Get Weather data and display the temperature from openweathermap Web API
     private fun getWeatherAPI(location: String) {
 
+        // Use the Thread Executor for waiting api responses
         val callable = Callable { val json =
             URL("https://api.openweathermap.org/data/2.5/weather?q=$location&units=metric&appid=4cf7f6610d941a1ca7583f50e7e41ba3").readText()
             Log.d("Weather Report", json)

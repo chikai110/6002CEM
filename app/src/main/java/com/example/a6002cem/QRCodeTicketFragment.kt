@@ -36,15 +36,19 @@ class QRCodeTicketFragment : Fragment() {
         var view = inflater.inflate(R.layout.fragment_qr_code_ticket, container, false)
         cameraSurfaceView = view.findViewById(R.id.cameraSurfaceView)
         barcodeLine = view.findViewById(R.id.barcode_line)
+
+        // Check the Camera permission
         if (ContextCompat.checkSelfPermission(
                 requireContext(), android.Manifest.permission.CAMERA
             ) != PackageManager.PERMISSION_GRANTED
         ) {
             askForCameraPermission()
         } else {
+            // Preparing to start the camera for QR Code Scanning
             setupControls()
         }
 
+        // Load QR Code Scanning Animation
         val aniSlide: Animation =
             AnimationUtils.loadAnimation(requireContext(), R.anim.scanner_animation)
 
@@ -53,7 +57,7 @@ class QRCodeTicketFragment : Fragment() {
         return view
     }
 
-
+    // Setup Camera and load the barcodeDetector
     private fun setupControls() {
         barcodeDetector =
             BarcodeDetector.Builder(requireContext()).setBarcodeFormats(Barcode.ALL_FORMATS).build()
@@ -100,6 +104,7 @@ class QRCodeTicketFragment : Fragment() {
                     "Scanner has been closed", Toast.LENGTH_SHORT).show()
             }
 
+            // Detecting the QR Code
             override fun receiveDetections(detections: Detector.Detections<Barcode>) {
                 val barcodes = detections.detectedItems
                 if (barcodes.size() == 1) {
@@ -119,6 +124,7 @@ class QRCodeTicketFragment : Fragment() {
         })
     }
 
+    // Ask for allow to use camera
     private fun askForCameraPermission() {
         ActivityCompat.requestPermissions(
             requireActivity(),
@@ -147,12 +153,4 @@ class QRCodeTicketFragment : Fragment() {
         cameraSource.stop()
     }
 
-    companion object {
-        fun newInstance(param1: String, param2: String) =
-            QRCodeTicketFragment().apply {
-                arguments = Bundle().apply {
-
-                }
-            }
-    }
 }
