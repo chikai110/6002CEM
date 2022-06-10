@@ -66,6 +66,8 @@ class LocationFragment : Fragment() {
         mLocationText!!.text = ""
         mTemperatureText!!.text = "Temperature Not available yet"
 
+
+        // Check the location and GPS permission
         val locationPermissionRequest = registerForActivityResult(
             ActivityResultContracts.RequestMultiplePermissions(),
             ActivityResultCallback<Map<String?, Boolean?>> { result: Map<String?, Boolean?> ->
@@ -77,14 +79,11 @@ class LocationFragment : Fragment() {
                 )
                 if (fineLocationGranted != null && fineLocationGranted) {
                     // Precise location access granted.
-                    // permissionOk = true;
                     mLocationText!!.text = "permission granted"
                 } else if (coarseLocationGranted != null && coarseLocationGranted) {
                     // Only approximate location access granted.
-                    // permissionOk = true;
                     mLocationText!!.text = "permission granted"
                 } else {
-                    // permissionOk = false;
                     // No location access granted.
                     mLocationText!!.text = "permission not granted"
                 }
@@ -102,16 +101,19 @@ class LocationFragment : Fragment() {
         mLocationRequest!!.fastestInterval = 5
         mLocationRequest!!.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
 
+        // call the GPS start Function
         view.findViewById<Button>(R.id.locateOnOff).setOnClickListener {
             onStartClicked(view)
         }
 
+        // Call the Locate the address
         view.findViewById<Button>(R.id.locate).setOnClickListener {
             onLocateClicked(view)
 
             val supportMapFragment =
                 childFragmentManager.findFragmentById(R.id.map_fragment) as SupportMapFragment?
 
+            // Added Cinema location Markers
             val currentLocation = LatLng(mLastLocation!!.latitude, mLastLocation!!.longitude)
             val cinema1 = LatLng(22.3981, 113.9746)
             val cinema2 = LatLng(22.3988, 113.9754)
@@ -134,9 +136,10 @@ class LocationFragment : Fragment() {
         return view
     }
 
+    // Start GPS Function
     private fun onStartClicked (v : View) {
         mLocationProvider = activity?.let { LocationServices.getFusedLocationProviderClient(it) }
-        mLocationText!!.text = "Started updating location"
+        mLocationText!!.text = "Started updating location..."
         if (ActivityCompat.checkSelfPermission(
                 requireContext(),
                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -153,6 +156,7 @@ class LocationFragment : Fragment() {
         )
     }
 
+    // Get the location address by Geocoder
     private fun onLocateClicked (v : View) {
 
         mGeocoder = Geocoder(requireContext())
@@ -178,9 +182,11 @@ class LocationFragment : Fragment() {
                 }
                 mLocationText!!.text = addressLines
                 sharedPreferences = requireActivity().getSharedPreferences("SharedPreMain", Context.MODE_PRIVATE)
+                // Store the countryName for movie filtering
                 val editor = sharedPreferences!!.edit()
                 editor.putString(MainActivity.CURRENT_LOCATION, addresses[0].countryName.toString())
                 editor.commit()
+                // Call the get weather API function
                 getWeatherAPI(addresses[0].countryName)
             } else {
                 mLocationText!!.text = "WARNING! Geocoder returned more than 1 addresses!"
@@ -197,6 +203,7 @@ class LocationFragment : Fragment() {
         }
     }
 
+    // Get Weather data and display the temperature from openweathermap Web API
     private fun getWeatherAPI(location: String) {
 
         val callable = Callable { val json =
@@ -209,9 +216,5 @@ class LocationFragment : Fragment() {
         val future = Executors.newSingleThreadExecutor().submit(callable)
         mTemperatureText!!.text = future.get()
 
-    }
-
-    companion object {
-        var REQUEST_LOCATION = 1
     }
 }

@@ -28,9 +28,11 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragment_home, container, false)
 
+        // Get the firebase instance and items data
         database = FirebaseDatabase.getInstance("https://cem-98b80-default-rtdb.asia-southeast1.firebasedatabase.app")
         reference = database?.getReference("items")
 
+        // Get the current locale for data filtering
         sharedPreferences = requireActivity().getSharedPreferences("SharedPreMain", Context.MODE_PRIVATE)
         var currentCountry = sharedPreferences!!.getString(MainActivity.CURRENT_LOCATION, "Hong Kong")
 
@@ -38,6 +40,7 @@ class HomeFragment : Fragment() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 itemList.clear()
 
+                // Assign the firebase record to Item List
                 val child = snapshot.children
                 child.forEach {
                     if (it.child("location").value.toString() == currentCountry) {
@@ -67,11 +70,15 @@ class HomeFragment : Fragment() {
         recyclerView?.setHasFixedSize(true)
         recyclerView?.layoutManager =
             GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
+        // Create adapter for the recyclerView
         adapter = ItemAdapter(itemList)
+        // Add the on Click Listener for each item by movie Id
         adapter!!.setOnItemClickListener(object : ItemAdapter.onItemClickListener {
             override fun onItemClick(position: Int) {
                 var movieId = itemList[position].key
                 val itemDetailsFragment = ItemDetailsFragment.newInstance(movieId)
+
+                // Click to navigate to Item Details Fragment
                 var navItemDetails = activity as FragmentNavigation
                 navItemDetails.navigateFrag(itemDetailsFragment, true)
             }

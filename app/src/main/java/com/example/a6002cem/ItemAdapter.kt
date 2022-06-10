@@ -21,12 +21,14 @@ class ItemAdapter(private var itemList:MutableList<Item>): RecyclerView.Adapter<
         mListener = listener
     }
 
+    // Create Item View Holder for display card view
     override fun onCreateViewHolder( parent: ViewGroup, viewType: Int ):ItemViewHolder {
         val layoutView: View = LayoutInflater.from(parent.context).
         inflate(R.layout.item_card_view,parent,false)
         return ItemViewHolder(layoutView, mListener)
     }
 
+    // Binding the data from Item List
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         Picasso.get().load(itemList[position].img)
             .into(holder.itemImage)
@@ -39,6 +41,7 @@ class ItemAdapter(private var itemList:MutableList<Item>): RecyclerView.Adapter<
         return itemList.size
     }
 
+    // Set the data to the view elements
     class ItemViewHolder(view: View, listener: onItemClickListener): RecyclerView.ViewHolder(view){
         var itemImage: ImageView = view.findViewById(R.id.item_image)
         var itemTitle: TextView = view.findViewById(R.id.item_title)

@@ -35,12 +35,14 @@ class ItemDetailsFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragment_item_details, container, false)
-        database =
-            FirebaseDatabase.getInstance("https://cem-98b80-default-rtdb.asia-southeast1.firebasedatabase.app")
+        database = FirebaseDatabase.getInstance("https://cem-98b80-default-rtdb.asia-southeast1.firebasedatabase.app")
 
+        // Get the movie Id parameter form Home Fragment
         movieId = arguments?.getString("movieId").toString()
+        // Get firebase single data by key
         reference = database?.getReference("items")?.child(movieId!!)
 
+        // member variables that hold item details info
         mMoviePoster = view.findViewById(R.id.item_details_images)
         mTitleText = view.findViewById<View>(R.id.item_details_title_tv) as TextView
         mReleaseText = view.findViewById<View>(R.id.item_details_release_text) as TextView
@@ -48,9 +50,9 @@ class ItemDetailsFragment : Fragment() {
         mRatingText = view.findViewById<View>(R.id.item_details_rating_bar) as RatingBar
         mInfoText = view.findViewById<View>(R.id.item_details_info_text) as TextView
 
-
         val firebaseListener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
+                // Set the data to the item details view
                 Picasso.get().load(snapshot.child("img").value as String?)
                     .into(mMoviePoster)
                 mTitleText!!.text = snapshot.child("title").value as String?
@@ -65,6 +67,7 @@ class ItemDetailsFragment : Fragment() {
         }
         reference?.addListenerForSingleValueEvent(firebaseListener)
 
+        // Set the Top Bar back page Function
         var topAppBar = view.findViewById<View>(R.id.topAppBar) as MaterialToolbar
         topAppBar.setOnClickListener {
             var navItemDetails = activity as FragmentNavigation
