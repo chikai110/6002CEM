@@ -39,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:boxBackgroundColor="@color/mtrl_textinput_default_box_stroke_color"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="40dp"
             android:layout_marginStart="40dp"
             android:layout_marginEnd="40dp"
             android:hint="@string/username">

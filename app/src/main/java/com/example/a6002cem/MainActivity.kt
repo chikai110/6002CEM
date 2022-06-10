@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.os.ConfigurationCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
@@ -32,6 +33,10 @@ class MainActivity : AppCompatActivity(), FragmentNavigation{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val navView: BottomNavigationView = findViewById(R.id.bottom_nav)
+        // sets background color for the whole bar
+        navView.setBackgroundColor(ContextCompat.getColor(this, R.color.black))
 
         // Using sharedPreferences
         sharedPreferences = getSharedPreferences("SharedPreMain", MODE_PRIVATE)

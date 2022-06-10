@@ -6,6 +6,7 @@
     <string name="username">ユーザー名</string>
     <string name="password">パスワード</string>
     <string name="cnf_password">パスワードの確認</string>
+    <string name="signout">サインアウト</string>
 
     <string name="bottom_nav_home_label">ホーム</string>
     <string name="bottom_nav_map_label">位置</string>

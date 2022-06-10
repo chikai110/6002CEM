@@ -112,4 +112,15 @@
             tools:text="1234 5678" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_signOut"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="500dp"
+        android:text="@string/signout"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:backgroundTint="@color/gold" />
 </RelativeLayout>

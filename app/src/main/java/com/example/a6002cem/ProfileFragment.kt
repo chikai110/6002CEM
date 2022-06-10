@@ -8,11 +8,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
 import com.google.android.material.appbar.MaterialToolbar
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
+import com.google.firebase.ktx.Firebase
 import com.squareup.picasso.Picasso
 
 class ProfileFragment : Fragment() {
@@ -66,6 +70,14 @@ class ProfileFragment : Fragment() {
             var navItemDetails = activity as FragmentNavigation
             navItemDetails.navigateFrag(HomeFragment(), true)
         }
+
+        var btnSignout = view.findViewById<View>(R.id.btn_signOut) as Button
+        btnSignout.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            var navRegister = activity as FragmentNavigation
+            navRegister.navigateFrag(LoginFragment(),false)
+        }
+
         return view
     }
 }

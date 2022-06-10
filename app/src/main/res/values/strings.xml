@@ -6,6 +6,7 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="cnf_password">Confirm Password</string>
+    <string name="signout">Sign Out</string>
 
     <string name="bottom_nav_home_label">Home</string>
     <string name="bottom_nav_map_label">Location</string>

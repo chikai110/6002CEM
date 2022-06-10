@@ -39,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="40dp"
             android:layout_marginEnd="40dp"
             android:hint="@string/username"
             app:boxBackgroundColor="@color/mtrl_textinput_default_box_stroke_color">
@@ -66,12 +66,24 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPassword" />
 
+            <TextView
+                android:id="@+id/login_error_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:textColor="?attr/colorError"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="36dp">
+            android:layout_marginTop="0dp">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_login"
@@ -96,18 +108,6 @@
                 android:textStyle="bold" />
 
         </RelativeLayout>
-
-        <TextView
-            android:id="@+id/login_error_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:textColor="?attr/colorError"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/biometric_status"
