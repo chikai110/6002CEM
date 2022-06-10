@@ -28,7 +28,6 @@ class QRCodeTicketFragment : Fragment() {
     private var cameraSurfaceView: SurfaceView? = null
     private var barcodeLine: View? = null
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -61,7 +60,7 @@ class QRCodeTicketFragment : Fragment() {
 
         cameraSource = CameraSource.Builder(requireContext(), barcodeDetector)
             .setRequestedPreviewSize(1920, 1080)
-            .setAutoFocusEnabled(true) //you should add this feature
+            .setAutoFocusEnabled(true)
             .build()
 
         cameraSurfaceView!!.getHolder().addCallback(object : SurfaceHolder.Callback {
@@ -106,15 +105,13 @@ class QRCodeTicketFragment : Fragment() {
                 if (barcodes.size() == 1) {
                     scannedValue = barcodes.valueAt(0).rawValue
 
-
-                    //Don't forget to add this line printing value or finishing activity must run on main thread
                     activity?.runOnUiThread {
                         cameraSource.stop()
-                        Log.d("value", scannedValue )
-                        //Toast.makeText(requireContext(), "value- $scannedValue", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(),
+                            "value- $scannedValue", Toast.LENGTH_SHORT).show()
                         activity!!.finish()
                     }
-                }else
+                } else
                 {
                     Log.d("value", "value- else" )
                 }
@@ -140,8 +137,7 @@ class QRCodeTicketFragment : Fragment() {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 setupControls()
             } else {
-                Toast.makeText(requireContext(),
-                    "Permission Denied", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(),"Permission Denied", Toast.LENGTH_SHORT).show()
             }
         }
     }
