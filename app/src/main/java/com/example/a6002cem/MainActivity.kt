@@ -33,11 +33,14 @@ class MainActivity : AppCompatActivity(), FragmentNavigation{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // Using sharedPreferences
         sharedPreferences = getSharedPreferences("SharedPreMain", MODE_PRIVATE)
         fAuth = Firebase.auth
 
+        // Load Home Fragment By default
         navigateFrag(HomeFragment(), true)
 
+        // Setup Bottom Nav Bar
         bottomNav = findViewById<BottomNavigationView>(R.id.bottom_nav)
         bottomNav.setOnItemSelectedListener{
             when (it.itemId) {
@@ -62,6 +65,7 @@ class MainActivity : AppCompatActivity(), FragmentNavigation{
                     }
                     return@setOnItemSelectedListener true
                 }
+                // Call change Language Function
                 R.id.languageFragment -> {
                     var localeName = sharedPreferences!!.getString(LANG_KEY, "en")
                     if (localeName == "en") {
@@ -78,6 +82,7 @@ class MainActivity : AppCompatActivity(), FragmentNavigation{
         }
     }
 
+    // Change Language
     private fun setLocale(localeName: String) {
         if (localeName !== currentLang) {
             locale = Locale(localeName)
@@ -90,16 +95,19 @@ class MainActivity : AppCompatActivity(), FragmentNavigation{
                 MainActivity::class.java
             )
             refresh.putExtra(currentLang, localeName)
+            // Restart activity
             startActivity(refresh)
         }
     }
 
+    // Save the locale to sharedPreference
     private fun saveLocale(localeName: String) {
         val editor = sharedPreferences!!.edit()
         editor.putString(LANG_KEY, localeName)
         editor.commit()
     }
 
+    // Navigate Fragment Function
     override fun navigateFrag(fragment: Fragment, addToStack: Boolean) {
         val transaction = supportFragmentManager
             .beginTransaction()

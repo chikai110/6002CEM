@@ -53,6 +53,7 @@ class LoginFragment : Fragment() {
 
         executor = ContextCompat.getMainExecutor(requireContext())
 
+        // Added Biometric Login Function
         biometricPrompt = BiometricPrompt(this, executor,
             object : BiometricPrompt.AuthenticationCallback() {
 
@@ -65,6 +66,8 @@ class LoginFragment : Fragment() {
                 override fun onAuthenticationSucceeded(
                     result: BiometricPrompt.AuthenticationResult) {
                     super.onAuthenticationSucceeded(result)
+
+                    // Navigate to Profile Fragment when Biometric Login success
                     var navHome = activity as FragmentNavigation
                     navHome.navigateFrag(ProfileFragment(), false)
                 }
@@ -89,6 +92,7 @@ class LoginFragment : Fragment() {
             biometricPrompt.authenticate(promptInfo)
         }
 
+        // Check the Biometric feature whether is set or not
         val biometricStatusTextView =
             view.findViewById<TextView>(R.id.biometric_status)
         val biometricManager = BiometricManager.from(requireContext())
@@ -107,6 +111,7 @@ class LoginFragment : Fragment() {
         return view
     }
 
+    // Login using Firebase account
     private fun firebaseSignIn() {
         val btnLogin = view?.findViewById(R.id.btn_login) as Button
         btnLogin.isEnabled = false
@@ -115,11 +120,13 @@ class LoginFragment : Fragment() {
             password.text.toString()).addOnCompleteListener{
                 task ->
             if(task.isSuccessful){
+                // Navigate to Profile Fragment when Login success
                 var navHome = activity as FragmentNavigation
                 navHome.navigateFrag(ProfileFragment(), false)
                 val currentUser = fAuth.currentUser
 
                 sharedPreferences = requireActivity().getSharedPreferences("SharedPreMain", Context.MODE_PRIVATE)
+                // Store the User ID to sharedPreference for profile use
                 val editor = sharedPreferences!!.edit()
                 if (currentUser != null) {
                     editor.putString(MainActivity.USER_ID, currentUser.uid)
@@ -133,6 +140,7 @@ class LoginFragment : Fragment() {
         }
     }
 
+    // Login in UI Checking
     private fun validateForm(){
         val icon = AppCompatResources.getDrawable(requireContext(),
             R.drawable.ic_warning)
