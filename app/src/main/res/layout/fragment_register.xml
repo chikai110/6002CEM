@@ -100,20 +100,32 @@
                 android:layout_marginEnd="40dp"
                 android:text="Login"
                 android:textColor="@color/light_gray"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_register_reg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Register"
-                android:layout_toStartOf="@id/btn_login_reg"
                 android:layout_marginEnd="20dp"
+                android:layout_toStartOf="@id/btn_login_reg"
+                android:text="Register"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 app:backgroundTint="@color/gold" />
 
         </RelativeLayout>
+
+        <TextView
+            android:id="@+id/login_error_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:textColor="?attr/colorError"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </LinearLayout>
 </ScrollView>

@@ -55,6 +55,11 @@ class RegisterFragmentTest {
     }
 
     @Test
+    fun userCanEnterConfirmPassword() {
+        insertInCnfPwdEditText("dh239048fy")
+    }
+
+    @Test
     fun userCanClickSignUpText() {
         clickSignUpText()
     }
@@ -88,32 +93,40 @@ class RegisterFragmentTest {
 
         insertInUsernameEditText("chikai0110@gmail.com")
         insertInPwdEditText("1234")
+        insertInCnfPwdEditText("1234")
         clickLoginButton()
 
         Intents.intended(IntentMatchers.hasComponent(MainActivity::class.java.name))
     }
 
     private fun insertInUsernameEditText(username: String) =
-        Espresso.onView(ViewMatchers.withId(R.id.log_username)).perform(
+        Espresso.onView(ViewMatchers.withId(R.id.reg_username)).perform(
             ViewActions.scrollTo(),
             ViewActions.clearText(),
             ViewActions.typeText(username)
         )
 
     private fun insertInPwdEditText(pwd: String) =
-        Espresso.onView(ViewMatchers.withId(R.id.log_password)).perform(
+        Espresso.onView(ViewMatchers.withId(R.id.reg_password)).perform(
+            ViewActions.scrollTo(),
+            ViewActions.clearText(),
+            ViewActions.typeText(pwd)
+        )
+
+    private fun insertInCnfPwdEditText(pwd: String) =
+        Espresso.onView(ViewMatchers.withId(R.id.reg_cnf_password)).perform(
             ViewActions.scrollTo(),
             ViewActions.clearText(),
             ViewActions.typeText(pwd)
         )
 
     private fun clickLoginButton() =
-        Espresso.onView(ViewMatchers.withId(R.id.btn_login))
+        Espresso.onView(ViewMatchers.withId(R.id.btn_register_reg))
             .perform(ViewActions.scrollTo(), ViewActions.click())
 
     private fun clickSignUpText() =
-        Espresso.onView(ViewMatchers.withId(R.id.btn_register)).perform(
+        Espresso.onView(ViewMatchers.withId(R.id.btn_login_reg)).perform(
             ViewActions.scrollTo(),
-            clickClickableSpan("New User?")
+            clickClickableSpan("Login")
         )
 }
