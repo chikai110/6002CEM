@@ -1,22 +1,17 @@
 package com.example.a6002cem
 
-import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.os.Looper
+import android.util.Log
 import android.view.*
-import androidx.fragment.app.Fragment
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.databinding.DataBindingUtil.setContentView
+import androidx.fragment.app.Fragment
 import com.example.a6002cem.databinding.ActivityMainBinding
-import com.google.android.gms.location.LocationCallback
-import com.google.android.gms.location.LocationResult
-import com.google.android.gms.location.LocationServices
 import com.google.android.gms.vision.CameraSource
 import com.google.android.gms.vision.Detector
 import com.google.android.gms.vision.barcode.Barcode
@@ -29,10 +24,10 @@ class QRCodeTicketFragment : Fragment() {
     private lateinit var cameraSource: CameraSource
     private lateinit var barcodeDetector: BarcodeDetector
     private var scannedValue = ""
-    private lateinit var binding: ActivityMainBinding
 
     private var cameraSurfaceView: SurfaceView? = null
     private var barcodeLine: View? = null
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,24 +35,25 @@ class QRCodeTicketFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragment_qr_code_ticket, container, false)
-
+        cameraSurfaceView = view.findViewById(R.id.cameraSurfaceView)
+        barcodeLine = view.findViewById(R.id.barcode_line)
         if (ContextCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.CAMERA
+                requireContext(), android.Manifest.permission.CAMERA
             ) != PackageManager.PERMISSION_GRANTED
         ) {
             askForCameraPermission()
         } else {
             setupControls()
         }
-        binding = ActivityMainBinding.inflate(inflater,container,false)
+
         val aniSlide: Animation =
             AnimationUtils.loadAnimation(requireContext(), R.anim.scanner_animation)
-        barcodeLine = view.findViewById(R.id.barcode_line)
+
         barcodeLine?.startAnimation(aniSlide)
-        cameraSurfaceView = view.findViewById(R.id.cameraSurfaceView)
+
         return view
     }
+
 
     private fun setupControls() {
         barcodeDetector =
@@ -68,7 +64,7 @@ class QRCodeTicketFragment : Fragment() {
             .setAutoFocusEnabled(true) //you should add this feature
             .build()
 
-        cameraSurfaceView?.getHolder()?.addCallback(object : SurfaceHolder.Callback {
+        cameraSurfaceView!!.getHolder().addCallback(object : SurfaceHolder.Callback {
             @SuppressLint("MissingPermission")
             override fun surfaceCreated(holder: SurfaceHolder) {
                 try {
@@ -101,8 +97,8 @@ class QRCodeTicketFragment : Fragment() {
 
         barcodeDetector.setProcessor(object : Detector.Processor<Barcode> {
             override fun release() {
-                Toast.makeText(activity, "Scanner has been closed", Toast.LENGTH_SHORT)
-                    .show()
+                Toast.makeText(requireContext(),
+                    "Scanner has been closed", Toast.LENGTH_SHORT).show()
             }
 
             override fun receiveDetections(detections: Detector.Detections<Barcode>) {
@@ -110,15 +106,17 @@ class QRCodeTicketFragment : Fragment() {
                 if (barcodes.size() == 1) {
                     scannedValue = barcodes.valueAt(0).rawValue
 
+
+                    //Don't forget to add this line printing value or finishing activity must run on main thread
                     activity?.runOnUiThread {
                         cameraSource.stop()
-                        Toast.makeText(requireContext(), "value- $scannedValue", Toast.LENGTH_SHORT).show()
+                        Log.d("value", scannedValue )
+                        //Toast.makeText(requireContext(), "value- $scannedValue", Toast.LENGTH_SHORT).show()
                         activity!!.finish()
                     }
                 }else
                 {
-                    Toast.makeText(requireContext(), "value- else", Toast.LENGTH_SHORT).show()
-
+                    Log.d("value", "value- else" )
                 }
             }
         })
@@ -142,7 +140,8 @@ class QRCodeTicketFragment : Fragment() {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 setupControls()
             } else {
-                Toast.makeText(activity, "Permission Denied", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(),
+                    "Permission Denied", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -152,22 +151,7 @@ class QRCodeTicketFragment : Fragment() {
         cameraSource.stop()
     }
 
-
-
-
-
-
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment QRCodeTicketFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
         fun newInstance(param1: String, param2: String) =
             QRCodeTicketFragment().apply {
                 arguments = Bundle().apply {
