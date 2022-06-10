@@ -58,17 +58,27 @@ dependencies {
 
     api 'com.google.android.material:material:1.7.0-alpha02'
 
+    // Testing
     testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    // AndroidX Test - JVM testing
+    testImplementation "androidx.test.ext:junit-ktx:1.1.3"
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
 
     // espresso for intents
     androidTestImplementation 'androidx.test.espresso:espresso-intents:3.4.0'
+
+    //espresso for recyclerview
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.4.0'
+
+    // testing coroutines
+    androidTestImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.3'
 
     //fragment testing
     debugImplementation "androidx.fragment:fragment-testing:1.4.1"
 
     //navigation testing
     androidTestImplementation "androidx.navigation:navigation-testing:2.4.2"
-
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }
