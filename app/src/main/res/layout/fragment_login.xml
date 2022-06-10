@@ -41,7 +41,7 @@
             android:layout_marginStart="40dp"
             android:layout_marginTop="50dp"
             android:layout_marginEnd="40dp"
-            android:hint="Username"
+            android:hint="@string/username"
             app:boxBackgroundColor="@color/mtrl_textinput_default_box_stroke_color">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -57,7 +57,7 @@
             android:layout_marginStart="40dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="40dp"
-            android:hint="Password"
+            android:hint="@string/password"
             app:boxBackgroundColor="@color/mtrl_textinput_default_box_stroke_color">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -79,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="40dp"
-                android:text="Login"
+                android:text="@string/login"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 app:backgroundTint="@color/gold" />

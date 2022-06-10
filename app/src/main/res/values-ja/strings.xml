@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">映画アップ (6002CEM)</string>
-    <string name="login">Login</string>
-    <string name="register">Register</string>
-    <string name="username">Username</string>
-    <string name="password">Password</string>
+    <string name="login">ログイン</string>
+    <string name="register">登録</string>
+    <string name="username">ユーザー名</string>
+    <string name="password">パスワード</string>
+    <string name="cnf_password">パスワードの確認</string>
 
     <string name="bottom_nav_home_label">ホーム</string>
     <string name="bottom_nav_map_label">位置</string>

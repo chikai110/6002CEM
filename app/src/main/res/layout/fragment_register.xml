@@ -42,7 +42,7 @@
             android:layout_marginTop="50dp"
             android:layout_marginStart="40dp"
             android:layout_marginEnd="40dp"
-            android:hint="Username">
+            android:hint="@string/username">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/reg_username"
@@ -55,7 +55,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
+            android:hint="@string/password"
             app:boxBackgroundColor="@color/mtrl_textinput_default_box_stroke_color"
             android:layout_marginTop="10dp"
             android:layout_marginStart="40dp"
@@ -72,7 +72,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Confirm Password"
+            android:hint="@string/cnf_password"
             app:boxBackgroundColor="@color/mtrl_textinput_default_box_stroke_color"
             android:layout_marginTop="10dp"
             android:layout_marginStart="40dp"
@@ -98,7 +98,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="40dp"
-                android:text="Login"
+                android:text="@string/login"
                 android:textColor="@color/light_gray"
                 android:textStyle="bold" />
 
@@ -108,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
                 android:layout_toStartOf="@id/btn_login_reg"
-                android:text="Register"
+                android:text="@string/register"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 app:backgroundTint="@color/gold" />
