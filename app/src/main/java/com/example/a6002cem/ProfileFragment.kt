@@ -78,6 +78,7 @@ class ProfileFragment : Fragment() {
         var btnEdit = view.findViewById<View>(R.id.btn_profile_edit) as Button
         var btnSave = view.findViewById<View>(R.id.btn_profile_save) as Button
 
+        // Add Edit Button Function
         btnEdit.setOnClickListener {
             mMobileEditText!!.setText(mMobileText!!.getText().toString())
             mMobileText!!.setVisibility(View.GONE)
@@ -86,6 +87,8 @@ class ProfileFragment : Fragment() {
             btnEdit!!.setVisibility(View.GONE)
             btnSave!!.setVisibility(View.VISIBLE)
         }
+
+        // Add Save Button Function
         btnSave.setOnClickListener {
             reference?.child("mobile")?.setValue(mMobileEditText!!.getText().toString())
             mMobileText!!.setText(mMobileEditText!!.getText().toString())
