@@ -88,7 +88,7 @@ class ProfileFragment : Fragment() {
         }
         btnSave.setOnClickListener {
             reference?.child("mobile")?.setValue(mMobileEditText!!.getText().toString())
-            mMobileText!!.setText(mMobileText!!.getText().toString())
+            mMobileText!!.setText(mMobileEditText!!.getText().toString())
             mMobileText!!.setVisibility(View.VISIBLE)
             mMobileEditText!!.setVisibility(View.GONE)
             btnSave!!.setVisibility(View.GONE)
