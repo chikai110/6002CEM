@@ -29,6 +29,7 @@ class ProfileFragment : Fragment() {
     private var mUserNameText: TextView? = null
     private var mEmailText: TextView? = null
     private var mMobileText: TextView? = null
+    private var mMobileEditText: TextView? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,6 +49,8 @@ class ProfileFragment : Fragment() {
         mUserNameText = view.findViewById<View>(R.id.profile_name_tv) as TextView
         mEmailText = view.findViewById<View>(R.id.profile_email_tv) as TextView
         mMobileText = view.findViewById<View>(R.id.profile_mobile_tv) as TextView
+        mMobileEditText = view.findViewById<View>(R.id.profile_mobile_edit) as TextView
+
 
         // Getting real time database data
         val firebaseListener = object : ValueEventListener {
@@ -71,6 +74,29 @@ class ProfileFragment : Fragment() {
             navItemDetails.navigateFrag(HomeFragment(), true)
         }
 
+        // Call the Edit View
+        var btnEdit = view.findViewById<View>(R.id.btn_profile_edit) as Button
+        var btnSave = view.findViewById<View>(R.id.btn_profile_save) as Button
+
+        btnEdit.setOnClickListener {
+            mMobileEditText!!.setText(mMobileText!!.getText().toString())
+            mMobileText!!.setVisibility(View.GONE)
+            mMobileEditText!!.setVisibility(View.VISIBLE)
+            mMobileText!!.setVisibility(View.GONE)
+            btnEdit!!.setVisibility(View.GONE)
+            btnSave!!.setVisibility(View.VISIBLE)
+        }
+        btnSave.setOnClickListener {
+            reference?.child("mobile")?.setValue(mMobileEditText!!.getText().toString())
+            mMobileText!!.setText(mMobileText!!.getText().toString())
+            mMobileText!!.setVisibility(View.VISIBLE)
+            mMobileEditText!!.setVisibility(View.GONE)
+            btnSave!!.setVisibility(View.GONE)
+            btnEdit!!.setVisibility(View.VISIBLE)
+        }
+
+
+        // Sign Out Firebase
         var btnSignout = view.findViewById<View>(R.id.btn_signOut) as Button
         btnSignout.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
